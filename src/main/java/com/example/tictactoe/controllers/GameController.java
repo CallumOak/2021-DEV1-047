@@ -2,11 +2,13 @@ package com.example.tictactoe.controllers;
 
 import com.example.tictactoe.services.GameService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 
 @Controller
+@Order(2)
 public class GameController implements CommandLineRunner {
     private final GameService gameService;
 
