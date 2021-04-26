@@ -1,19 +1,24 @@
 package com.example.tictactoe.models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
+@Entity
 public class Board {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @ElementCollection
     private List<Integer> grid = new ArrayList<>();
+    @ElementCollection
     private List<Integer> victoryLines = new ArrayList<>();
 
     public Board(){

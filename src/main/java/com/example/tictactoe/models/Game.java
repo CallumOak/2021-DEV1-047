@@ -4,13 +4,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
 public class Game {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @OneToOne
     private Player player1;
+    @OneToOne
     private Player player2;
     private Integer currentPlayerId;
+    @OneToOne
     private Board board;
     private TwoPlayerGameStatusEnum gameStatus;
 
