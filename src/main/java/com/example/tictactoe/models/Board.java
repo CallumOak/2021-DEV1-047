@@ -24,7 +24,6 @@ public class Board {
         }
     }
 
-
     /*
     The victory lines are the score of each horizontal, vertical,
     and diagonal line. Each x on a line corresponds to +1, and each o
@@ -99,5 +98,33 @@ public class Board {
                 break;
 
         }
+    }
+
+    @Override
+    public String toString() {
+        String boardString = "";
+
+        for(int rowIndex = 0 ; rowIndex < 3; rowIndex++){
+            for(int valueIndex = 0 ; valueIndex < 3; valueIndex++){
+                String shape;
+                switch (grid.get(rowIndex * 3 + valueIndex)){
+                    case 1:
+                        shape = " X";
+                        break;
+                    case -1:
+                        shape = " O";
+                        break;
+                    default:
+                        shape = "  ";
+                        break;
+                }
+                String boardDrawing = valueIndex < 2 ? " |" : " " + (char) ('a' + rowIndex) + "\n";
+                boardString += shape + boardDrawing;
+            }
+            String boardDrawing = rowIndex < 2 ? "---+---+---\n" : " 0   1   2";
+            boardString += boardDrawing;
+        }
+
+        return boardString;
     }
 }
