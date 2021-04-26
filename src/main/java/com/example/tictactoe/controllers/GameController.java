@@ -16,20 +16,22 @@ public class GameController implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         while(gameService.gameStatus() == "ONGOING"){
-            System.out.println(gameService.board());
-            System.out.println("\nPlease enter the coordinates : ");
-            String coordinates = input.nextLine();
+            printTurn("\nPlease enter the coordinates : ");
+            String coordinates = scanner.nextLine();
             gameService.makeMove(coordinates);
         }
         if(gameService.gameStatus() == "DRAW"){
-            System.out.println(gameService.board());
-            System.out.println("It's a draw. Nobody won...");
+            printTurn("It's a draw. Nobody won...");
         }
         else{
-            System.out.println(gameService.board());
-            System.out.println("CONGRATULATIONS " + gameService.gameStatus() + ", YOU WIN!!!");
+            printTurn("CONGRATULATIONS " + gameService.gameStatus() + ", YOU WIN!!!");
         }
+    }
+
+    private void printTurn(String text){
+        System.out.println(gameService.board());
+        System.out.println(text);
     }
 }
