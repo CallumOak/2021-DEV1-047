@@ -131,4 +131,9 @@ public class Board {
 
         return boardString;
     }
+
+    public void setGrid(int location, int value) {
+        grid.set(location, value);
+        setVictoryLines(location, value);
+    }
 }

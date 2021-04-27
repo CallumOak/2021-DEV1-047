@@ -26,8 +26,7 @@ public class GameServiceImpl implements GameService {
             if(validateMove(location)){
                 Game game = getGame();
                 int value = game.getCurrentPlayerId() == 1 ? 1 : -1;
-                game.getBoard().getGrid().set(location, value);
-                game.getBoard().setVictoryLines(location, value);
+                game.getBoard().setGrid(location, value);
                 game.setCurrentPlayerId(game.getCurrentPlayerId() == 1 ? 2 : 1);
                 game.setGameStatus();
                 gameRepository.save(game);
