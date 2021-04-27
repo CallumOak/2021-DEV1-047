@@ -2,17 +2,15 @@ package com.example.tictactoe.services;
 
 import com.example.tictactoe.models.Game;
 import com.example.tictactoe.repositories.GameRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
+@AllArgsConstructor
 public class GameServiceImpl implements GameService {
     private final GameRepository gameRepository;
-
-    public GameServiceImpl(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
-    }
 
     @Override
     public Game getGame() {

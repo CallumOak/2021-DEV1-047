@@ -10,7 +10,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@EqualsAndHashCode
 public class Player {
     @Id
     private Integer id;
