@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface GameService {
     Game getGame();
-    void makeMove(String coordinates);
+    String makeMove(String coordinates);
     Boolean validateMove(int location);
     String board();
     String gameStatus();

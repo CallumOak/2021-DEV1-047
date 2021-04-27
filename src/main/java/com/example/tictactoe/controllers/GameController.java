@@ -17,10 +17,11 @@ public class GameController implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
+        String moveStatus = "New game";
         while(gameService.gameStatus() == "ONGOING"){
-            printTurn("\nPlease enter the coordinates : ");
+            printTurn(moveStatus + "\nPlease enter the coordinates : ");
             String coordinates = scanner.nextLine();
-            gameService.makeMove(coordinates);
+            moveStatus = gameService.makeMove(coordinates);
         }
         if(gameService.gameStatus() == "DRAW"){
             printTurn("It's a draw. Nobody won...");

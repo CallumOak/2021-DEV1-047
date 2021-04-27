@@ -20,7 +20,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void makeMove(String coordinates) {
+    public String makeMove(String coordinates) {
         int row = coordinates.charAt(0) - 'a';
         int column = Integer.parseInt(coordinates.substring(1));
         int location = row * 3 + column;
@@ -32,7 +32,9 @@ public class GameServiceImpl implements GameService {
             game.setCurrentPlayerId(game.getCurrentPlayerId() == 1 ? 2 : 1);
             game.setGameStatus();
             gameRepository.save(game);
+            return "Good move";
         }
+        return "INVALID MOVE " + coordinates;
     }
 
     @Override
