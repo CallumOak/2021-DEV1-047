@@ -1,6 +1,7 @@
 package com.example.tictactoe.controllers;
 
 import com.example.tictactoe.services.GameService;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
@@ -8,13 +9,10 @@ import org.springframework.stereotype.Controller;
 import java.util.Scanner;
 
 @Controller
+@AllArgsConstructor
 @Order(2)
 public class GameController implements CommandLineRunner {
     private final GameService gameService;
-
-    public GameController(GameService gameService) {
-        this.gameService = gameService;
-    }
 
     @Override
     public void run(String... args) throws Exception {
