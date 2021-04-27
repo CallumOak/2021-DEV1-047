@@ -28,6 +28,11 @@ public class Board {
         }
     }
 
+    public void setGrid(int location, int value) {
+        grid.set(location, value);
+        setVictoryLines(location, value);
+    }
+
     /*
     The victory lines are the score of each horizontal, vertical,
     and diagonal line. Each x on a line corresponds to +1, and each o
@@ -130,10 +135,5 @@ public class Board {
         }
 
         return boardString;
-    }
-
-    public void setGrid(int location, int value) {
-        grid.set(location, value);
-        setVictoryLines(location, value);
     }
 }
