@@ -30,7 +30,8 @@ public class GameServiceImpl implements GameService {
             game.getBoard().getGrid().set(location, value);
             game.getBoard().setVictoryLines(location, value);
             game.setCurrentPlayerId(game.getCurrentPlayerId() == 1 ? 2 : 1);
-            game.setTwoPlayerGameStatusEnum();
+            game.setGameStatus();
+            gameRepository.save(game);
         }
     }
 

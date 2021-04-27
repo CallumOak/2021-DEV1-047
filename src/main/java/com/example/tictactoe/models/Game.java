@@ -14,14 +14,15 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Player player1;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Player player2;
     private Integer currentPlayerId;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Board board;
-    private TwoPlayerGameStatusEnum gameStatus;
+    @Enumerated(EnumType.STRING)
+    private TwoPlayerGameStatusEnum gameStatus = TwoPlayerGameStatusEnum.ONGOING;
 
     public Game(Player player1, Player player2, Board board){
         this.player1 = player1;
@@ -30,7 +31,7 @@ public class Game {
         currentPlayerId = 1;
     }
 
-    public void setTwoPlayerGameStatusEnum() {
+    public void setGameStatus() {
         if(board.getVictoryLines().contains(3)){
             gameStatus = TwoPlayerGameStatusEnum.PLAYER1;
             return;
