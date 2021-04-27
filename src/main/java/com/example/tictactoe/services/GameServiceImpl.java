@@ -52,9 +52,14 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Boolean validateInputs(String coordinates) {
-        int row = coordinates.charAt(0) - 'a';
-        int column = Integer.parseInt(coordinates.substring(1));
-        return coordinates.length() == 2 && row <3 && row >=0 && column <3;
+        try{
+            int column = Integer.parseInt(coordinates.substring(1));
+            int row = coordinates.charAt(0) - 'a';
+            return coordinates.length() == 2 && row <3 && row >=0 && column <3 && column >=0;
+        }
+        catch(Exception e){
+            return false;
+        }
     }
 
     @Override
