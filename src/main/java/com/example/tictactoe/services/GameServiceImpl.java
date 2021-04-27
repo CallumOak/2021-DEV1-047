@@ -21,7 +21,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public void makeMove(String coordinates) {
-        int row = coordinates.charAt(0);
+        int row = coordinates.charAt(0) - 'a';
         int column = Integer.parseInt(coordinates.substring(1));
         int location = row * 3 + column;
         if(validateMove(location)){
@@ -41,7 +41,7 @@ public class GameServiceImpl implements GameService {
             return getGame().getBoard().getGrid().get(location) == 0;
         }
         else{
-            throw new IndexOutOfBoundsException("Invalid input");
+            throw new IndexOutOfBoundsException("Invalid input " + location);
         }
     }
 
