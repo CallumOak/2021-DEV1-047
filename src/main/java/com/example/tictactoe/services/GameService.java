@@ -8,7 +8,7 @@ public interface GameService {
     Game getGame();
     String makeMove(String coordinates);
     Boolean validateMove(int location);
-    Boolean validateInputs(int row, int column);
+    Boolean validateInputs(String coordinates);
     String board();
     String gameStatus();
 }

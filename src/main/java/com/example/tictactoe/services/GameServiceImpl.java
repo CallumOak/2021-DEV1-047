@@ -21,20 +21,23 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public String makeMove(String coordinates) {
-        int row = coordinates.charAt(0) - 'a';
-        int column = Integer.parseInt(coordinates.substring(1));
-        int location = row * 3 + column;
-        if(validateInputs(row, column) && validateMove(location)){
-            Game game = getGame();
-            int value = game.getCurrentPlayerId() == 1 ? 1 : -1;
-            game.getBoard().getGrid().set(location, value);
-            game.getBoard().setVictoryLines(location, value);
-            game.setCurrentPlayerId(game.getCurrentPlayerId() == 1 ? 2 : 1);
-            game.setGameStatus();
-            gameRepository.save(game);
-            return "Good move";
+        if(validateInputs(coordinates)){
+            int row = coordinates.charAt(0) - 'a';
+            int column = Integer.parseInt(coordinates.substring(1));
+            int location = row * 3 + column;
+            if(validateMove(location)){
+                Game game = getGame();
+                int value = game.getCurrentPlayerId() == 1 ? 1 : -1;
+                game.getBoard().getGrid().set(location, value);
+                game.getBoard().setVictoryLines(location, value);
+                game.setCurrentPlayerId(game.getCurrentPlayerId() == 1 ? 2 : 1);
+                game.setGameStatus();
+                gameRepository.save(game);
+                return "Good move";
+            }
+            return "ALREADY OCCUPIED " + coordinates;
         }
-        return "INVALID MOVE " + coordinates;
+        return "INVALID COORDINATES " + coordinates;
     }
 
     @Override
@@ -48,8 +51,10 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Boolean validateInputs(int row, int column) {
-        return row <3 && row >=0 && column <3;
+    public Boolean validateInputs(String coordinates) {
+        int row = coordinates.charAt(0) - 'a';
+        int column = Integer.parseInt(coordinates.substring(1));
+        return coordinates.length() == 2 && row <3 && row >=0 && column <3;
     }
 
     @Override
