@@ -11,13 +11,33 @@ The rules are described below :
 - If a player is able to draw three X’s or three O’s in a row, that player wins.
 - If all nine squares are filled and neither player has three in a row, the game is a draw.
 
-##Compile and run
+## Before you start
+
+This project uses java 11.0.10 and maven 3.6.3
+
+Make sure these are properly set up on your system.
+
+Java:
+
+    java -version
+    java version "11.0.10" 2021-01-19 LTS
+    
+Maven:
+
+    mvn -v
+    Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+
+## Compile and run
+
 This is a command line application.
+
 Compile and run this project using maven:
 
     mvn spring-boot:run -q
 
-##Playing the game
+It will take a few seconds to start up
+
+## Playing the game
 
 You will be prompted to play your move by providing coordinates
     
@@ -33,3 +53,8 @@ You will be prompted to play your move by providing coordinates
 You can enter any coordinate from a0 to c2.
 
 Invalid inputs or already occupied squares will not be accepted.
+
+## Unit tests
+You can run the unit tests with maven:
+
+    mvn test
